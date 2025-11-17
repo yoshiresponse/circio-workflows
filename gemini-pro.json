@@ -1,99 +1,77 @@
 {
-  "workflow": {
-    "name": "Complex Effects Chain",
-    "nodes": [
-      {
-        "id": "node_0",
-        "name": "input",
-        "position": {"x": 100, "y": 200},
-        "inputs": [],
-        "outputs": ["out"]
-      },
-      {
-        "id": "node_1",
-        "name": "Stereo Chorus",
-        "position": {"x": 300, "y": 100},
-        "workflowData": {
-          "workflowId": "nested-chorus-uuid-001",
-          "inputMapping": {"chorus-in-uuid": 0},
-          "outputMapping": {
-            "chorus-out-L-uuid": 0,
-            "chorus-out-R-uuid": 1
-          }
-        },
-        "inputs": ["audio_in"],
-        "outputs": ["left_out", "right_out"]
-      },
-      {
-        "id": "node_2",
-        "name": "delay",
-        "position": {"x": 300, "y": 300},
-        "inputs": ["in"],
-        "outputs": ["out"]
-      },
-      {
-        "id": "node_3",
-        "name": "reverb",
-        "position": {"x": 500, "y": 300},
-        "inputs": ["in"],
-        "outputs": ["out"]
-      },
-      {
-        "id": "node_4",
-        "name": "mixer",
-        "position": {"x": 700, "y": 200},
-        "inputs": ["in1", "in2", "in3"],
-        "outputs": ["out"]
-      },
-      {
-        "id": "node_5",
-        "name": "output",
-        "position": {"x": 900, "y": 200},
-        "inputs": ["in"],
-        "outputs": []
-      }
-    ],
-    "wires": [
-      {
-        "from": {"nodeId": "node_0", "portIndex": 0},
-        "to": {"nodeId": "node_1", "portIndex": 0}
-      },
-      {
-        "from": {"nodeId": "node_0", "portIndex": 0},
-        "to": {"nodeId": "node_2", "portIndex": 0}
-      },
-      {
-        "from": {"nodeId": "node_2", "portIndex": 0},
-        "to": {"nodeId": "node_3", "portIndex": 0}
-      },
-      {
-        "from": {"nodeId": "node_1", "portIndex": 0},
-        "to": {"nodeId": "node_4", "portIndex": 0}
-      },
-      {
-        "from": {"nodeId": "node_1", "portIndex": 1},
-        "to": {"nodeId": "node_4", "portIndex": 1}
-      },
-      {
-        "from": {"nodeId": "node_3", "portIndex": 0},
-        "to": {"nodeId": "node_4", "portIndex": 2}
-      },
-      {
-        "from": {"nodeId": "node_4", "portIndex": 0},
-        "to": {"nodeId": "node_5", "portIndex": 0}
-      }
-    ],
-    "groups": [
-      {
-        "id": "group-fx-chain-uuid",
-        "name": "Delay/Reverb FX",
-        "nodeIndices": [2, 3],
-        "color": "#3498DB",
-        "isLoop": false
-      }
-    ],
-    "inputPorts": [],
-    "outputPorts": []
-  },
-  "explanation": "This workflow demonstrates a parallel effects chain. The main 'input' (node_0) splits its signal. One path goes to a 'Stereo Chorus' (node_1), which is a nested workflow instance. The other path goes to a 'Delay/Reverb FX' group containing a 'delay' (node_2) followed by a 'reverb' (node_3). The three resulting signals (Stereo Chorus Left, Stereo Chorus Right, and the Reverb output) are combined in a 'mixer' (node_4) before being sent to the final 'output' (node_5)."
+  "nodes": [
+    {
+      "id": "node_0",
+      "name": "oscillator",
+      "position": {"x": 100, "y": 100},
+      "inputs": [],
+      "outputs": ["out"]
+    },
+    {
+      "id": "node_1",
+      "name": "oscillator",
+      "position": {"x": 100, "y": 250},
+      "inputs": [],
+      "outputs": ["out"]
+    },
+    {
+      "id": "node_2",
+      "name": "mixer",
+      "position": {"x": 350, "y": 175},
+      "inputs": ["in1", "in2"],
+      "outputs": ["out"]
+    },
+    {
+      "id": "node_3",
+      "name": "filter",
+      "position": {"x": 600, "y": 175},
+      "inputs": ["in"],
+      "outputs": ["out"]
+    },
+    {
+      "id": "node_4",
+      "name": "reverb",
+      "position": {"x": 850, "y": 175},
+      "inputs": ["in"],
+      "outputs": ["out"]
+    },
+    {
+      "id": "node_5",
+      "name": "output",
+      "position": {"x": 1100, "y": 175},
+      "inputs": ["in"],
+      "outputs": []
+    }
+  ],
+  "wires": [
+    {
+      "from": {"nodeId": "node_0", "portIndex": 0},
+      "to": {"nodeId": "node_2", "portIndex": 0}
+    },
+    {
+      "from": {"nodeId": "node_1", "portIndex": 0},
+      "to": {"nodeId": "node_2", "portIndex": 1}
+    },
+    {
+      "from": {"nodeId": "node_2", "portIndex": 0},
+      "to": {"nodeId": "node_3", "portIndex": 0}
+    },
+    {
+      "from": {"nodeId": "node_3", "portIndex": 0},
+      "to": {"nodeId": "node_4", "portIndex": 0}
+    },
+    {
+      "from": {"nodeId": "node_4", "portIndex": 0},
+      "to": {"nodeId": "node_5", "portIndex": 0}
+    }
+  ],
+  "groups": [
+    {
+      "id": "group-osc-bank-uuid",
+      "name": "Oscillator Bank",
+      "nodeIndices": [0, 1],
+      "color": "#2ECC71",
+      "isLoop": false
+    }
+  ]
 }

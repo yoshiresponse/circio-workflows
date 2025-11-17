@@ -1,1 +1,107 @@
-{"nodes":[{"y":80,"x":25,"inputs":[],"outputs":["out"],"titleBarColor":"clear","name":"generator"},{"y":280,"x":275,"inputs":["in"],"outputs":["out1","out2"],"titleBarColor":"clear","name":"splitter"},{"y":280,"x":525,"inputs":["audio_in"],"outputs":["audio_out"],"titleBarColor":"clear","name":"Delay & Filter FX"},{"y":80,"x":525,"inputs":["in"],"outputs":["out"],"titleBarColor":"clear","name":"reverb"},{"y":80,"x":1025,"inputs":["input_compressor_in","input_mixer_in2"],"outputs":[],"titleBarColor":"blue","name":"Nested 1"}],"wires":[{"toInput":0,"fromNode":3,"toNode":4,"fromOutput":0},{"toInput":0,"fromNode":0,"toNode":1,"fromOutput":0},{"toInput":1,"fromNode":2,"toNode":4,"fromOutput":0},{"toInput":0,"fromNode":1,"toNode":3,"fromOutput":0},{"toInput":0,"fromNode":1,"toNode":2,"fromOutput":1}],"groups":[{"nodeIndices":[3,2,1],"isLoop":false,"id":"BDD1ED1E-0FC7-4D99-BA51-5C0408FF3C1D","color":"blue","name":"Group 1"}]}
+{
+    "nodes": [
+        {
+            "y": 80,
+            "x": 25,
+            "inputs": [],
+            "outputs": [
+                "out"
+            ],
+            "titleBarColor": "clear",
+            "name": "generator"
+        },
+        {
+            "y": 280,
+            "x": 275,
+            "inputs": [
+                "in"
+            ],
+            "outputs": [
+                "out1",
+                "out2"
+            ],
+            "titleBarColor": "clear",
+            "name": "splitter"
+        },
+        {
+            "y": 280,
+            "x": 525,
+            "inputs": [
+                "audio_in"
+            ],
+            "outputs": [
+                "audio_out"
+            ],
+            "titleBarColor": "clear",
+            "name": "Delay & Filter FX"
+        },
+        {
+            "y": 80,
+            "x": 525,
+            "inputs": [
+                "in"
+            ],
+            "outputs": [
+                "out"
+            ],
+            "titleBarColor": "clear",
+            "name": "reverb"
+        },
+        {
+            "y": 80,
+            "x": 1025,
+            "inputs": [
+                "input_compressor_in",
+                "input_mixer_in2"
+            ],
+            "outputs": [],
+            "titleBarColor": "blue",
+            "name": "Nested 1"
+        }
+    ],
+    "wires": [
+        {
+            "toInput": 0,
+            "fromNode": 3,
+            "toNode": 4,
+            "fromOutput": 0
+        },
+        {
+            "toInput": 0,
+            "fromNode": 0,
+            "toNode": 1,
+            "fromOutput": 0
+        },
+        {
+            "toInput": 1,
+            "fromNode": 2,
+            "toNode": 4,
+            "fromOutput": 0
+        },
+        {
+            "toInput": 0,
+            "fromNode": 1,
+            "toNode": 3,
+            "fromOutput": 0
+        },
+        {
+            "toInput": 0,
+            "fromNode": 1,
+            "toNode": 2,
+            "fromOutput": 1
+        }
+    ],
+    "groups": [
+        {
+            "nodeIndices": [
+                3,
+                2,
+                1
+            ],
+            "isLoop": false,
+            "id": "BDD1ED1E-0FC7-4D99-BA51-5C0408FF3C1D",
+            "color": "blue",
+            "name": "Group 1"
+        }
+    ]
+}
