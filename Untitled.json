@@ -1,0 +1,1 @@
+{"wires":[{"fromOutput":0,"toInput":0,"fromNode":0,"toNode":1}],"nodes":[{"y":480,"inputs":[],"name":"Generator","x":525,"outputs":["out0"],"titleBarColor":"cyan"},{"inputs":["in0","in1"],"name":"Mixer","x":775,"outputs":["out0"],"y":480,"titleBarColor":"gray"}],"groups":[]}
